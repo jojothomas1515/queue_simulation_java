@@ -26,11 +26,14 @@ class Doctor implements Runnable {
 
                 long stopTime = System.nanoTime();
                 long duration = (stopTime - startTime) / (long) 1e+9;
-                System.out
-                        .println("TimeElapsed in the processing of patient by Doctor with id " + this.id + " : "
-                                + duration + " seconds");
+                System.out.printf("Time Elapsed -> %d secs:\n\t%s\n\tBy: %s\n\tOn: %s\n", duration, p, this, q);
             }
         }
+
     }
 
+    @Override
+    public String toString() {
+        return "Doctor { id: " + this.id + "}";
+    }
 }

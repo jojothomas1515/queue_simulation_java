@@ -14,20 +14,33 @@ public class Doctors {
 
     }
 
-    public void processPatients() {
+    public long processPatients() {
+        int idx = 0;
         for (Doctor d : this.doctors) {
             Thread thread = new Thread(d);
+            this.threads[idx] = thread;
             thread.start();
         }
         try {
+            long start_time = System.nanoTime();
+
             for (Thread t : this.threads) {
                 if (t != null) {
                     t.join();
 
                 }
             }
+
+            long end_time = System.nanoTime();
+
+            long elapsed_time = (end_time - start_time) / (long) 1e+9;
+
+            System.out.printf("Total elapsed time is %d\n", elapsed_time);
+
+            return elapsed_time;
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return 0;
     }
 }
