@@ -51,7 +51,7 @@ class Main {
                 long elapsed = doctors.processPatients();
                 System.out.println(elapsed);
 
-                fw.append(String.format("\n%d,", elapsed));
+                fw.append(String.format("\n%d", elapsed));
 
             }
             fw.close();
